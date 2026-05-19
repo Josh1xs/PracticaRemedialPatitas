@@ -51,6 +51,8 @@ mascotasController.countMascotas = async (req,res) => {
     }
 }
 
+
+//Obtener por especie 
 mascotasController.getMascotasBySpecie = async (req, res) => {
     try {
         
@@ -61,6 +63,25 @@ mascotasController.getMascotasBySpecie = async (req, res) => {
 
     } catch (error) {
          console.log("error" + error)
+        return res.status(500).json({message: "Internal Server Error"});
+    }
+}
+
+
+//Obtener por edad
+
+mascotasController.getMascotasByAge = async (req,res) => {
+    try {
+
+        const {age} = req.body
+
+         const mascota = await mascotasModel.find({
+            age: {}
+         })
+
+        
+    } catch (error) {
+          console.log("error" + error)
         return res.status(500).json({message: "Internal Server Error"});
     }
 }
